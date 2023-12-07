@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   l_addfront.c                                       :+:      :+:    :+:   */
+/*   l_addbefore.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 16:07:46 by ijaija            #+#    #+#             */
-/*   Updated: 2023/12/07 18:23:51 by ijaija           ###   ########.fr       */
+/*   Created: 2023/12/07 16:22:33 by ijaija            #+#    #+#             */
+/*   Updated: 2023/12/07 18:04:29 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void l_addfront(t_list *list, t_node *node)
+void l_addbefore(t_list *list, t_node *node1 , t_node *node2)
 {
-	if (!node || !list)
-		return ;
-	if (!list->head)
-	{
-		list->head = node;
-		list->tail = node;
+	t_node	*tmp;
+	t_node	*tmp1;
+	t_node	*head;
+
+	if (!list || !list->head || !node1 || !node2)
+	{	
+		printf("Invalide list or node!\n");
 		return ;
 	}
-	node->next = list->head;
-	list->head = node;
+	head = list->head;
+	while (head)
+	{
+		tmp = head;
+		if (tmp->next == node1)
+		{
+			tmp1 = tmp->next;
+			tmp->next = node2;
+			node2->next = tmp1;
+			return ;
+		}
+		head = head->next;
+	}
 }

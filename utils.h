@@ -4,16 +4,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-struct s_node t_node;
-typedef struct s_node{
+// struct s_node t_node;
+typedef struct	s_node{
 	int value;
-	t_node *next;
-}t_node;
+	struct s_node *next;
+}				t_node;
 
-typedef struct s_list{
+typedef struct	s_list{
 	t_node *head;
 	t_node *tail;
-}t_list;
+}				t_list;
 
 
 t_list *c_list(void);

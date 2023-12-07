@@ -6,7 +6,7 @@
 /*   By: ijaija <ijaija@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 15:10:17 by ijaija            #+#    #+#             */
-/*   Updated: 2023/12/07 16:07:19 by ijaija           ###   ########.fr       */
+/*   Updated: 2023/12/07 18:26:46 by ijaija           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void l_display(t_list *list)
 {
+	t_node	*after_head;
+	int		i;
+
 	if (!list)
 	{
 		printf("The list is empty!\n");
@@ -29,6 +32,17 @@ void l_display(t_list *list)
 		printf("The list have no tail!\n");
 		return ;
 	}
-	printf("The head's content-->[%d]", list->head->value);
-	printf("The tail's content-->[%d]", list->tail->value);
+	printf("The head's content-->[%d]\n", list->head->value);
+	after_head = list->head->next;
+	i = 2;
+	if (after_head)
+	{
+		while (after_head->next)
+		{
+			printf("[%d]-->[%d]\n", i, after_head->value);
+			after_head = after_head->next;
+			i++;
+		}
+	}
+	printf("The tail's content-->[%d]\n", list->tail->value);
 }
